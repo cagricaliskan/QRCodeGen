@@ -1,0 +1,48 @@
+﻿@model Byte[] 
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+
+</head>
+
+<body>
+    <div>
+        <div>
+            <div>
+                <h1>Index</h1>
+
+                @using (Html.BeginForm(null, null, FormMethod.Post))
+                {
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label>Enter text for creating QR Code</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="qrText" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <button>Submit</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                }
+            </div>
+            <div >
+                @{
+                    if (Model != null)
+                    {
+                        <h3>QR Code Successfully Generated</h3>
+                        <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model))" />
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</body>
